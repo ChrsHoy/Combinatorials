@@ -1,6 +1,11 @@
+
 // Combinatorics.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
 #include "Combinatorics.h"
+#include "Datastruct.hpp"
+#include <iostream>
+
+using namespace std;
 
 //constructor
 Combs::Combs() 
@@ -8,39 +13,62 @@ Combs::Combs()
 	value = 1;
 }
 
+//Combs::~Combs(){delete value;}
+
 	
 int Combs::factorial(int a)
 {
+	value = 1;
 	for (int i = a; i >= 1; i--)
 	{
 		value *= i;
 	}
+	//cout << value;
 	return value;
 }
+
+
+int Combs::permutations(int a,int b)
+{
+	value = factorial(a) / factorial(a - b);
+	return value;
+}
+
+int Combs::combination(int a, int b)
+{
+	value = permutations(a,b) / factorial(b);
+	return value;
+}
+
+int Combs::multSet(int a,int b)
+{
+	//constexpr size_t size = b;
+	cout << "check";
+	int samples[1024] = {};
+	for(int i=0;i<1024;i++){samples[i]=0;}
+	List<int> list;
+	//int* samples = new int[b] { 0 };
+	int value;
+	int remaining=0;
+	for (int i = 0; i < b; i++)
+	{
+
+		cout << "Enter sample size" << '\n';
+		cin >> value;
+		samples[i] = value;
+		list.prefix(combination(a,samples[i]));
+		remaining += samples[i];
+	}
+	samples[b-1] = a - remaining;
+	list.prefix(combination(a, samples[b-1]));
+	list.printList();
+	//list.listCreate(list);
 	
+	//list.itor()
 
-	/*
-	int Combs::factorial(int a)
-	{
-		for (int i = a; i != 0; i--)
-		{
-			a += i;
-		}
-		return a;
-	}
-	*/
+	return 0;
 
-	/*
-	void Combs::factorial(int a)
-	{
-		for (int i = a; i != 0; i--)
-		{
-			a += i;
-		}
-	}
-	*/
-
-//};
+}
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
 // Debug program: F5 or Debug > Start Debugging menu

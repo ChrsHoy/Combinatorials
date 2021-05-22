@@ -4,28 +4,86 @@
 using namespace std;
 
 int number;
+void menu()
+{
+
+	//typedef 
+//	List<char> list;
+	Combs combs;
+
+	int proceed = 1;
+	int choice;
+	//char c = 'c';
+	//char* ptr = &c;
+
+	while (proceed != 0)
+	{
+		cout << "Choose a combinatorial function" << '\n';
+		cout << "(1)Factorial (2)Permutation (3)Combination (4)Multiset" << '\n';
+		cin >> choice;
+		
+		int set;
+		int sample;
+
+		switch (choice)
+		{
+
+		case 1:
+			cout << "Choose your set size" << '\n';
+			cin >> set;
+			number = combs.factorial(set);
+			cout << number << '\n';
+			break;
+
+
+		case 2:
+			cout << "Choose your set size" << '\n';
+			cin >> set;
+			cout << "Choose your sample size" << '\n';
+			cin >> sample;
+			number = combs.permutations(set,sample);
+			cout << number << '\n';
+			break;
+
+		case 3:
+			cout << "Choose your set size" << '\n';		
+			cin >> set;
+			cout << "Choose your sample size" << '\n';
+			cin >> sample;
+			number = combs.combination(set,sample);
+			cout << number << '\n';
+			break;
+
+		case 4:
+			cout << "Choose your set size" << '\n';
+			cin >> set;
+			cout << "Choose the number of samples" << '\n';
+			cin >> sample;
+			number = combs.multSet(set,sample);
+			cout << number << '\n';
+			break;
+
+		}
+		cout << "Is there more?" << "(1)Yes/(0)No" << '\n';
+		cin >> proceed;
+
+
+
+	}
+
+}
+
+
 
 int main(int argc, char* argv[])
 //int main()
 {
-    Combs combs;
-
-
-
-    cout << "Enter a functional value ";
-    cin >> number;
-
-    //factorial(value);
-    //combs.factorial(number);
-    number = combs.factorial(number);
-    //number=factorial(number);
-
-    cout << "Here is the value\n";
-    cout << "Here is the value\n" << number << "";
+	menu();
 
     return number;
 
 }
+
 
 // Combinatorics.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //

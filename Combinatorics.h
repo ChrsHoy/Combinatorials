@@ -1,7 +1,6 @@
 #ifndef COMBINATORICS_H
 #define COMBINATORICS_H
 
-//class Combs;
 
 
 class Combs
@@ -10,15 +9,18 @@ class Combs
 
 public:
 
-
 	Combs();
-	//int factorial(int a) { return value; }
+	//~Combs();
+	
 	int factorial(int a);
-	//void factorial(int a) {};
 
-	//int Combination(int a,int b) { return value; }
+	int combination(int a, int b);
 
-	//int Permutations(int a,int b) { return value; }
+	int permutations(int a, int b);
+
+//	void multSet(int a, int b);
+
+	int multSet(int a,int b);
 
 private:
 	int value;
